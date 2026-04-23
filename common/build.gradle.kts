@@ -2,18 +2,18 @@ plugins {
     `java-library`
 }
 
+val ignitionSdkVersion: String by rootProject.extra
+val javaTargetVersion: String by rootProject.extra
+
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(javaTargetVersion.toInt()))
     }
 }
 
-
 dependencies {
-    // compileOnly is the gradle equivalent to "provided" scope.  Here we resolve the dependencies via the
-    // declarations in the gradle/libs.versions.toml file
-    compileOnly(libs.ignition.common)
-    compileOnly(libs.ignition.perspective.common)
+    compileOnly("com.inductiveautomation.ignitionsdk:ignition-common:$ignitionSdkVersion")
+    compileOnly("com.inductiveautomation.ignitionsdk:perspective-common:$ignitionSdkVersion")
     compileOnly(libs.google.guava)
     compileOnly(libs.ia.gson)
 }

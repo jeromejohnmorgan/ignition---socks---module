@@ -1,0 +1,17 @@
+{
+    "trigger": false,
+    "autoplay": true,
+    "content": "<div class=\"gsap-target\" style=\"width:160px;height:60px;background:#2e7d32;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;\">Slide In</div>",
+    "animation": {
+        "type": "fromTo",
+        "target": ".gsap-target",
+        "duration": 0.6,
+        "ease": "power3.out",
+        "delay": 0,
+        "repeat": 0,
+        "yoyo": false,
+        "fromVars": { "opacity": 0, "x": -60 },
+        "vars":     { "opacity": 1, "x": 0 }
+    },
+    "style": { "classes": "" }
+}

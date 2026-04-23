@@ -1,14 +1,15 @@
-import {ComponentMeta, ComponentRegistry} from '@inductiveautomation/perspective-client';
-import { ApexChart, ApexChartMeta } from './components/ApexChart';
+import { ComponentMeta, ComponentRegistry } from '@inductiveautomation/perspective-client';
+import { GsapContainer, GsapContainerMeta } from './components/GsapContainer';
 
-export {ApexChart};
+export { GsapContainer };
 
 import '../scss/main';
 
-// as new components are implemented, import them, and add their meta to this array
+// Register every component meta with the Perspective client registry.
+// Each entry here must have a matching ComponentDescriptor registered on the
+// Java side (GsapContainer.java) with an identical component type ID.
 const components: Array<ComponentMeta> = [
-    new ApexChartMeta()
+    new GsapContainerMeta()
 ];
 
-// iterate through our components, registering each one with the registry.  Don't forget to register on the Java side too!
-components.forEach((c: ComponentMeta) => ComponentRegistry.register(c) );
+components.forEach((c: ComponentMeta) => ComponentRegistry.register(c));

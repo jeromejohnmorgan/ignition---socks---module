@@ -2,24 +2,22 @@ plugins {
     `java-library`
 }
 
+val ignitionSdkVersion: String by rootProject.extra
+val javaTargetVersion: String by rootProject.extra
+
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(javaTargetVersion.toInt()))
     }
 }
 
 dependencies {
-    // we have a dependency on the common project.  Use the typesafe syntax here, but could also be written
-    // as 'api(project(":common"))'. See https://docs.gradle.org/7.0/release-notes.html on Type-safe project accessors
     implementation(projects.common)
-
     modlImplementation(projects.web)
 
-    // declare our dependencies on ignition sdk elements.  These are defined in the gradle/libs.versions.toml file of
-    // the root project for this module
-    compileOnly(libs.ignition.common)
-    compileOnly(libs.ignition.gateway.api)
-    implementation(libs.ignition.perspective.gateway)
-    implementation(libs.ignition.perspective.common)
+    compileOnly("com.inductiveautomation.ignitionsdk:ignition-common:$ignitionSdkVersion")
+    compileOnly("com.inductiveautomation.ignitionsdk:gateway-api:$ignitionSdkVersion")
+    implementation("com.inductiveautomation.ignitionsdk:perspective-gateway:$ignitionSdkVersion")
+    implementation("com.inductiveautomation.ignitionsdk:perspective-common:$ignitionSdkVersion")
     compileOnly(libs.ia.gson)
 }

@@ -1,1 +1,20 @@
-// main stylesheet, import all scss files here for inclusion by webpack
+// ── GSAP Perspective component styles ────────────────────────────────────────
+
+.gsap-container {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    // The inner stage owns the animatable subtree.
+    .gsap-stage {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        // Sensible defaults for common target elements so designers get
+        // something visible before they apply their own inline styles.
+        .gsap-target {
+            display: inline-block;
+        }
+    }
+}
