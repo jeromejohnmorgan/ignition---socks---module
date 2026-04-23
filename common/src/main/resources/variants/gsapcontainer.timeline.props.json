@@ -1,0 +1,35 @@
+{
+    "trigger": false,
+    "autoplay": false,
+    "content": "<div style=\"display:flex;gap:12px;padding:8px;\"><div class=\"box-a\" style=\"width:60px;height:60px;background:#e53935;border-radius:6px;\"></div><div class=\"box-b\" style=\"width:60px;height:60px;background:#fb8c00;border-radius:6px;\"></div><div class=\"box-c\" style=\"width:60px;height:60px;background:#43a047;border-radius:6px;\"></div></div>",
+    "animation": {
+        "type": "timeline",
+        "target": ".box-a",
+        "steps": [
+            {
+                "target": ".box-a",
+                "type": "from",
+                "duration": 0.4,
+                "ease": "back.out(1.7)",
+                "vars": { "opacity": 0, "scale": 0.3 }
+            },
+            {
+                "target": ".box-b",
+                "type": "from",
+                "duration": 0.4,
+                "ease": "back.out(1.7)",
+                "position": "<0.15",
+                "vars": { "opacity": 0, "scale": 0.3 }
+            },
+            {
+                "target": ".box-c",
+                "type": "from",
+                "duration": 0.4,
+                "ease": "back.out(1.7)",
+                "position": "<0.15",
+                "vars": { "opacity": 0, "scale": 0.3 }
+            }
+        ]
+    },
+    "style": { "classes": "" }
+}

@@ -1,0 +1,17 @@
+{
+    "trigger": false,
+    "autoplay": true,
+    "content": "<div class=\"gsap-target\" style=\"width:120px;height:120px;background:#4a90d9;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;\">Fade In</div>",
+    "animation": {
+        "type": "fromTo",
+        "target": ".gsap-target",
+        "duration": 0.8,
+        "ease": "power2.out",
+        "delay": 0,
+        "repeat": 0,
+        "yoyo": false,
+        "fromVars": { "opacity": 0, "y": 15 },
+        "vars":     { "opacity": 1, "y": 0 }
+    },
+    "style": { "classes": "" }
+}

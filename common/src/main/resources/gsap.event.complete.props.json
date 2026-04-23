@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [],
+    "properties": {
+        "timestamp": {
+            "type": "number",
+            "description": "Unix epoch (milliseconds) when the animation completed."
+        },
+        "triggerValue": {
+            "description": "The value of the 'trigger' property at the time the animation completed."
+        }
+    }
+}

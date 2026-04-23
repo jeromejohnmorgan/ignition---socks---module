@@ -1,0 +1,122 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [],
+    "properties": {
+        "trigger": {
+            "description": "Bind this property to a tag value or expression. Every time the value changes the animation replays. Accepts boolean, number, or string.",
+            "default": false
+        },
+        "animation": {
+            "type": "object",
+            "description": "GSAP animation configuration. Drives what happens when 'trigger' changes.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The GSAP tween type: 'to' animates TO vars, 'from' animates FROM vars, 'fromTo' specifies both start and end states, 'timeline' runs an ordered sequence of steps.",
+                    "enum": ["to", "from", "fromTo", "timeline"],
+                    "default": "to"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "CSS selector for element(s) inside the container to animate (e.g. '.gsap-target', '#my-box', 'div'). For 'timeline' type this acts as the fallback selector for steps that omit their own target.",
+                    "default": ".gsap-target"
+                },
+                "duration": {
+                    "type": "number",
+                    "description": "Animation duration in seconds.",
+                    "default": 1.0
+                },
+                "ease": {
+                    "type": "string",
+                    "description": "GSAP easing string. Examples: 'none', 'power1.out', 'power2.inOut', 'bounce.out', 'elastic.out(1, 0.3)', 'back.inOut(1.7)', 'circ.in', 'expo.out', 'sine.inOut'.",
+                    "default": "power2.out"
+                },
+                "delay": {
+                    "type": "number",
+                    "description": "Seconds to wait before the animation starts.",
+                    "default": 0
+                },
+                "repeat": {
+                    "type": "number",
+                    "description": "Number of times to repeat after the first play. Use -1 for infinite.",
+                    "default": 0
+                },
+                "yoyo": {
+                    "type": "boolean",
+                    "description": "When true, every other repeat reverses direction (ping-pong effect). Requires repeat != 0.",
+                    "default": false
+                },
+                "vars": {
+                    "type": "object",
+                    "description": "The destination state for 'to' and 'fromTo' animations. Any CSS property GSAP can animate: opacity, x, y, xPercent, yPercent, scale, scaleX, scaleY, rotation, rotationX, rotationY, skewX, skewY, width, height, backgroundColor, color, borderRadius, etc.",
+                    "default": { "opacity": 1, "y": 0 }
+                },
+                "fromVars": {
+                    "type": "object",
+                    "description": "The starting state for 'fromTo' animations. Same properties as 'vars'.",
+                    "default": { "opacity": 0, "y": -20 }
+                },
+                "steps": {
+                    "type": "array",
+                    "description": "Ordered list of tween steps for the 'timeline' animation type. Steps run sequentially by default; use the 'position' parameter for parallel or offset placement.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "target": {
+                                "type": "string",
+                                "description": "CSS selector for this step's target element(s). Falls back to animation.target if omitted."
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": ["to", "from", "fromTo"],
+                                "default": "to"
+                            },
+                            "duration": {
+                                "type": "number",
+                                "description": "Step duration in seconds.",
+                                "default": 0.5
+                            },
+                            "ease": {
+                                "type": "string",
+                                "default": "power2.out"
+                            },
+                            "delay": {
+                                "type": "number",
+                                "default": 0
+                            },
+                            "vars": {
+                                "type": "object",
+                                "description": "Destination state for this step."
+                            },
+                            "fromVars": {
+                                "type": "object",
+                                "description": "Starting state for 'fromTo' steps."
+                            },
+                            "position": {
+                                "description": "Timeline position. Omit for sequential. Use '<' to start with previous, '+=0.2' for offset, a label string to jump to a label, or a numeric absolute time."
+                            }
+                        }
+                    },
+                    "default": []
+                }
+            }
+        },
+        "content": {
+            "type": "string",
+            "description": "HTML markup rendered inside the animation stage. Give animatable elements the CSS class or ID that matches the 'target' selector. Inline styles here set the initial visual state.",
+            "default": "<div class=\"gsap-target\" style=\"width:120px;height:120px;background:#7b2d8b;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;\">Animate me</div>"
+        },
+        "autoplay": {
+            "type": "boolean",
+            "description": "When true the animation plays immediately when the component first mounts, without waiting for a trigger change.",
+            "default": false
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": {
+                "classes": ""
+            }
+        }
+    }
+}
